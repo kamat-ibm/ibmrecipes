@@ -171,7 +171,9 @@ Note: The following errors might be seen after execution of the above step
     Error: /File[/opt/puppetlabs/puppet/cache/lib]: Could not evaluate: Could not retrieve information from environment production source(s) puppet://master.myhost.com/plugins
 
 This is because you don't have any plugins to syn yet, and the pluginsyn property is set to be true by default. So solutions are:
-1) Disable the setting in the agent's 'puppet.conf' file by setting  pluginsyn=false Or 
+
+1) Disable the setting in the agent's 'puppet.conf' file by setting  pluginsyn=false. Or 
+
 2) Create at least one plugin
 
 ## Testing
