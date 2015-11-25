@@ -203,7 +203,7 @@ Few testcases need to be executed as root user and others as puppet user.
 
 Execute testcases as root user:
 
-* Unit testcases, except ssl, face, indirector, network related testcases, should be executed as root user. The other testcases should be executed as puppet user.
+* Unit testcases, except ssl, face, indirector, network related testcases, should be executed as root user.
 * The integration testcases for provider and type should be executed as root user. 
 
 ```Note```: Run the  below commands as root user.You can switch to root user by running **exit**, if you are currently switched to puppet user.
