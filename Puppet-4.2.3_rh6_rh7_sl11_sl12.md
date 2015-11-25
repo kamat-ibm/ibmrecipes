@@ -199,9 +199,9 @@ Replace it with
      should compile.and_raise_error(Puppet::FileBucket::BucketError, /Got passed new contents/)
         end
 
-Few testcases needs to be executed as root user and others as puppet user or else the testcases fail.
+Few testcases need to be executed as root user and others as puppet user.
 
-Execute testcases as root user
+Execute testcases as root user:
 
 * All the unit testcases except ssl, face, indirector, network related testcases must be executed as root user. The other testcases must be executed as puppet user.
 * The integration testcases for provider and type should be executed as root user. 
@@ -244,7 +244,7 @@ Run the shell script
      ./rootuser_tests.sh
      
 
-Execute testcases as puppet user
+Execute testcases as puppet user:
 
 * ssl, face, indirector, network related  unit testcases should be executed as puppet user.
 * The integration testcases except provider and type related testcases should be executed as puppet user.
