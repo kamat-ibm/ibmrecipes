@@ -1,5 +1,5 @@
 # Building Puppet
-Puppet version 4.2.3 has been successfully built and tested for Linux on z Systems. The following instructions can be used for RHEL 7.1/6.6 and SLES 12/11.
+Puppet version 4.3.0 has been successfully built and tested for Linux on z Systems. The following instructions can be used for RHEL 7.1/6.6 and SLES 12/11.
 
 _**General Notes:**_ 	 
 _When following the steps below please use a standard permission user unless otherwise specified._
@@ -39,12 +39,12 @@ Install bundler:
    
 ###### 2.Install Puppet. 
 #
-     gem install puppet -v 4.2.3
+     gem install puppet
 
 ###### 3.Locate the $confdir by command.
 #
      puppet master --configprint confdir 
-and the output gives the directory. If such directory does not exists, create one. For example, if the output is /etc/puppetlabs/puppet , then
+The output gives the directory. If such directory does not exist, create one. For example, if the output is /etc/puppetlabs/puppet , then
 
      mkdir -p /etc/puppetlabs/puppet
 
@@ -116,13 +116,13 @@ Install bundler:
    
 ###### 2.Install Puppet. 
 #
-     gem install puppet -v 4.2.3
+     gem install puppet
 
 ###### 3.Locate the  $confdir  by command.
 #
      puppet agent --configprint confdir 
 
-and the output gives the directory. If such directory does not exists, create one. For example, if the output is /etc/puppetlabs/puppet , then
+The output gives the directory. If such directory does not exist, create one. For example, if the output is /etc/puppetlabs/puppet , then
 
      mkdir -p /etc/puppetlabs/puppet
     
@@ -178,12 +178,12 @@ This is because you don't have any plugins to syn yet, and the pluginsyn propert
 
 ## Testing
 For testing, run the tests from the source code.
-###### 1.Switch user to puppet, clone Puppet git repository in /home/puppet and bundle install the required gems.
-checkout branch ```4.2.3```
+###### 1.Switch user to puppet, clone Puppet git repository in /home/puppet and execute "bundle install" to install the required gems.
+checkout branch ```4.3.0```
 
      su puppet
      cd /home/puppet
-     git clone --branch 4.2.3 git://github.com/puppetlabs/puppet
+     git clone --branch 4.3.0 git://github.com/puppetlabs/puppet
      cd puppet
      bundle install --path .bundle/gems/
 
@@ -204,12 +204,12 @@ Few testcases needs to be executed as root user and others as puppet user or els
 
 Execute testcases as root user
 
-* All the unit testcases except ssl, face, indirector, network related testcases can be executed as root user. The other testcases expects puppet user ownership and keys to be generated.
-* The integration testcases of provider,type can be executed as root user as they require sudo/root privileges.
+* All the unit testcases except ssl, face, indirector, network related testcases must be executed as root user. The other testcases must be executed as puppet user.
+* The integration testcases for provider and type should be executed as root user. 
 
 ```Note```: Run the  below commands as root user.You can switch to root user by running **exit**, if you are currently switched to puppet user.
 
-Create a shell a shell script. For example ```rootuser_tests.sh``` 
+Create a shell script. For example ```rootuser_tests.sh``` 
 
      cd /home/puppet/puppet
      touch rootuser_tests.sh
@@ -247,9 +247,9 @@ Run the shell script
 
 Execute testcases as puppet user
 
-* ssl, face, indirector, network related  unittestcases can be executed as puppet user.
-* The integration testcases except provider,type related testcases can be executed as puppet user.
-* data_binding.rb file is not executed as it doesn't involve any testcases to be invoked directly.
+* ssl, face, indirector, network related  unit testcases should be executed as puppet user.
+* The integration testcases except provider and type related testcases should be executed as puppet user.
+* data_binding.rb file is not executed as it does not involve any testcases to be invoked directly.
 
 Create a shell script. For example ```puppetuser_tests.sh```
 
