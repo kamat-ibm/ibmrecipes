@@ -39,7 +39,7 @@ Install bundler:
    
 ###### 2.Install Puppet. 
 #
-     gem install puppet
+     gem install puppet -v 4.3.0
 
 ###### 3.Locate the $confdir by command.
 #
@@ -116,7 +116,7 @@ Install bundler:
    
 ###### 2.Install Puppet. 
 #
-     gem install puppet
+     gem install puppet -v 4.3.0
 
 ###### 3.Locate the  $confdir  by command.
 #
