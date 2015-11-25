@@ -179,7 +179,6 @@ This is because you don't have any plugins to syn yet, and the pluginsyn propert
 ## Testing
 For testing, run the tests from the source code.
 ###### 1.Switch user to puppet, clone Puppet git repository in /home/puppet and execute "bundle install" to install the required gems.
-checkout branch ```4.3.0```
 
      su puppet
      cd /home/puppet
