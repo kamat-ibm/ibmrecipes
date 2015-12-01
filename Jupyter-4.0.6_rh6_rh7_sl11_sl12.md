@@ -1,46 +1,42 @@
+# Building Jupyter Notebook
+Jupyter Notebook version 4.0.6 has been successfully built and tested for Linux on z Systems. The following instructions can be used for RHEL 7.1/6.6 and SLES 12/11.
 
-# Base image
-FROM sles11
+_**General Notes:**_ 	 
+_When following the steps below please use a standard permission user unless otherwise specified._
 
-# The author
-MAINTAINER LoZ Open Source Ecosystem (https://www.ibm.com/developerworks/community/groups/community/lozopensource)
 
-# Install the following build dependencies:
-zypper install -y git \             
-                wget \
-                gcc \
-                gcc-c++ \
-				make \
-				tar \
-				zlib-devel \
-				openssl-devel \
-				ncurses-devel \
-				sqlite-devel \
-				readline-devel \
-				tk-devel \
-				gdbm-devel \
-				libpcap-devel
+###### 1. Install the following dependencies.
 
-				
-# Download and install Python 3.3.5:				
-wget http://python.org/ftp/python/3.3.5/Python-3.3.5.tar.xz
-tar xf Python-3.3.5.tar.xz
-cd Python-3.3.5
-./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
-make && make altinstall
+For RHEL6 & RHEL7:
 
-# Download & install the setup script for Setuptools. Install pip using the newly installed Setuptools:
-wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
-python3.3 ez_setup.py
-easy_install-3.3 pip
+    yum install -y 
+    
+For SLES11: 
 
-# Download source code from GitHub:
-git clone https://github.com/jupyter/notebook.git
-cd /notebook
+    zypper install -y git wget gcc gcc-c++ make tar zlib-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel libpcap-devel
 
-# Install the below dependencies required to install notebook:
-easy_install-3.3 pyzmq jinja2 tornado
+Download and install Python 3.3.5:		
 
-# Install the Jupyter Notebook using Python’s package manager pip:
-pip install notebook &&  pip install jupyter
+	wget http://python.org/ftp/python/3.3.5/Python-3.3.5.tar.xz
+	tar xf Python-3.3.5.tar.xz
+	cd Python-3.3.5
+	./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+	make && make altinstall
+
+Download & install the setup script for Setuptools.Install pip using the Setuptools:
+
+	wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+	python3.3 ez_setup.py
+	easy_install-3.3 pip
+
+###### 2.Download the source code from GitHub:
+	git clone https://github.com/jupyter/notebook.git
+	cd /notebook
+
+###### 3.Install the below dependencies required to install notebook:
+	easy_install-3.3 pyzmq jinja2 tornado
+
+###### 4. Install the Jupyter Notebook using Python’s package manager pip:
+	pip install notebook 
+    pip install jupyter
 
