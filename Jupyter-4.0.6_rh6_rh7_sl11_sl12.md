@@ -10,6 +10,10 @@ _When following the steps below please use a standard permission user unless oth
 For RHEL6 & RHEL7:
 
     yum install -y git wget gcc python-devel.s390x gcc-c++
+
+For SLES12:
+
+    zypper install -y git wget gcc python-devel.s390x gcc-c++ python-setuptools python-xml
     
 For SLES11: 
 
@@ -29,17 +33,20 @@ Download and install Python 3.3.5, setup script for Setuptools and pip:
 	python3.3 ez_setup.py
 	easy_install-3.3 pip
 
-###### 2.Download the source code from GitHub:
+###### 2. Download the source code from GitHub:
 	git clone https://github.com/jupyter/notebook.git
 	cd /notebook
 
-###### 3.(For SLES11 only)Install the below dependencies required to install notebook:
-	easy_install-3.3 pyzmq jinja2 tornado
-
-###### 4.(For RHEL7 only) Download and install pip:
+###### 3. (For RHEL7 only) Download and install pip:
 	wget https://bootstrap.pypa.io/get-pip.py
-	python get-pip.py 
+	python get-pip.py
 	
-###### 5. Install the Jupyter Notebook using Python’s package manager pip:
+###### 4. (For SLES12 only) Install pip:
+	easy_install pip
+
+###### 5. (For SLES11 only) Install the below dependencies required to install notebook:
+	easy_install-3.3 pyzmq jinja2 tornado
+	
+###### 6. Install the Jupyter Notebook using Python’s package manager pip:
 	pip install notebook 
 	pip install jupyter
