@@ -41,5 +41,4 @@ Download and install Python 3.3.5, setup script for Setuptools and pip:
 	
 ###### 5. Install the Jupyter Notebook using Python’s package manager pip:
 	pip install notebook 
-        pip install jupyter
-
+	pip install jupyter
