@@ -7,19 +7,24 @@ _When following the steps below please use a standard permission user unless oth
 
 ###### 1. Install the following dependencies.
 
-For RHEL6 & RHEL7:
+For RHEL7:
 
     yum install -y git wget gcc python-devel.s390x gcc-c++
 
 For SLES12:
 
     zypper install -y git wget gcc python-devel.s390x gcc-c++ python-setuptools python-xml
+
+For RHEL6:
+
+    yum install -y wget git tar gcc gcc-c++ xz.s390x zlib-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
     
 For SLES11: 
 
     zypper install -y git wget gcc gcc-c++ make tar zlib-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel libpcap-devel
 
-SLES11 requires the Python version >= 2.7.* to be installed. 
+Jupyter Notebooks requires Python version >= 2.7 inorder to be installed. 
+RHEL6 & SLES11, contains older version of Python. Hence, upgarde the Python version as shown below.
 
 Download and install Python 3.3.5, setup script for Setuptools and pip:		
 
@@ -44,7 +49,7 @@ Download and install Python 3.3.5, setup script for Setuptools and pip:
 ###### 4. (For SLES12 only) Install pip:
 	easy_install pip
 
-###### 5. (For SLES11 only) Install the below dependencies required to install notebook:
+###### 5. (For RHEL6 & SLES11 only) Install the below dependencies required to install notebook:
 	easy_install-3.3 pyzmq jinja2 tornado
 	
 ###### 6. Install the Jupyter Notebook using Python’s package manager pip:
