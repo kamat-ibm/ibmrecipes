@@ -24,6 +24,7 @@ Download and install Python 3.3.5, setup script for Setuptools and pip:
 	cd Python-3.3.5
 	./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
 	make && make altinstall
+	
 	wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
 	python3.3 ez_setup.py
 	easy_install-3.3 pip
