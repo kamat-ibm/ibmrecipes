@@ -1,8 +1,8 @@
-### Building Ruby on Rails on RHEL 6, RHEL7, SLES 11 and SLES 12
+### Building Ruby on Rails on RHEL6/7 and SLES11/12
 
-# Installing [Ruby on Rails](http://rubyonrails.org/) on RHEL 6, RHEL7, SLES 11 and SLES 12
+# Installing [Ruby on Rails](http://rubyonrails.org/) on RHEL6/7 and SLES11/12
 
-The Ruby on Rails code can be installed on a Linux on z System running RHEL 6, RHEL7, SLES 11 and SLES12 by following these instructions:
+The Ruby on Rails code can be installed on a Linux on z System running RHEL6/7 and SLES11/12 by following these instructions:
 
 **NOTE**: When following the steps below please use a standard
 permission user unless otherwise specified.
@@ -20,11 +20,11 @@ permission user unless otherwise specified.
     
  For RHEL6/7,
 
-        yum install -y patch
+        yum install -y patch make gcc
     
  For SLES11/12,
 
-        zypper install -y patch ruby-devel
+        zypper install -y patch make gcc
 
 4. Install Ruby on Rails via gem
 
