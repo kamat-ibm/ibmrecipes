@@ -15,23 +15,18 @@ permission user unless otherwise specified.
 
     export PATH=/home/<USER>/.gem/ruby/bin:$PATH
 ```
-    Where <USER> is the standard user you are installing under
+    
+ Where <USER> is the standard user you are installing under
 
 3. Add a few additional build dependencies
-    * patch
-    * ruby-devel
     
-For RHLE6 & RHEL7,
+For RHEL7,
 ```
     yum install -y patch
 ```
 For SLES12,
 ```
     zypper install -y patch ruby-devel
-```
-3. Add additional dependencies for SLES12 i.e. ruby-devel
-```
-    zypper install -y patch
 ```
 
 4. Install Ruby on Rails via gem
