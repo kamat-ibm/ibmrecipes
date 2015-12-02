@@ -30,8 +30,4 @@ permission user unless otherwise specified.
 
         gem install rails
     
-5. Set additional environmental variable for SLES12
-
-        export PATH=$PATH:/usr/lib64/ruby/gems/2.1.0/gems/railties-4.2.4/bin
-    
-6. Ruby on Rails is now installed (verify with `rails -v`)
+5. Ruby on Rails is now installed (verify with `rails -v`)
