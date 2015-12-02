@@ -1,4 +1,4 @@
-### Building Ruby on Rails on RHEL 6, RHEL7, SLES 11 and SLES 12
+### Building Ruby on Rails on RHEL 6.6, RHEL7, SLES 11 and SLES 12
 
 # Installing [Ruby on Rails](http://rubyonrails.org/) on RHEL 6.6, RHEL7, SLES 11 and SLES 12
 
