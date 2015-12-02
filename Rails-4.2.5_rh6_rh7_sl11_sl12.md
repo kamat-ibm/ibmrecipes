@@ -18,11 +18,11 @@ permission user unless otherwise specified.
 
 3. Add a few additional build dependencies
     
-For RHEL6/7,
+ For RHEL6/7,
 
         yum install -y patch
     
-For SLES11/12,
+ For SLES11/12,
 
         zypper install -y patch ruby-devel
 
