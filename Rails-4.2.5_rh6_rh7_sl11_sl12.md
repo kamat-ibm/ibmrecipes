@@ -18,7 +18,7 @@ permission user unless otherwise specified.
 
 3. Add a few additional build dependencies
     
- For RHEL6/7,
+ For RHEL6.6/7,
 
         yum install -y patch
     
