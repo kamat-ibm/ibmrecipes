@@ -35,13 +35,6 @@ Download and install Python 3.3.5 and PIP (For RHEL6 and SLES11):
 	make && make altinstall
 
 ###### 2. Install PIP:
-
-For RHEL6/SLES11:
-
-    wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
-    python3.3 ez_setup.py
-    easy_install-3.3 pip
-    easy_install-3.3 pyzmq jinja2 tornado
     
 For RHEL7:
 
@@ -51,7 +44,14 @@ For RHEL7:
 For SLES12:
 
     easy_install pip
-       	
+ 
+For RHEL6/SLES11:
+
+    wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+    python3.3 ez_setup.py
+    easy_install-3.3 pip
+    easy_install-3.3 pyzmq jinja2 tornado
+    
 ###### 3. Download the source code from GitHub:
 	git clone https://github.com/jupyter/notebook.git
 	cd /notebook
