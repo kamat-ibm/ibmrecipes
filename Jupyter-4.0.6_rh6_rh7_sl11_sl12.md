@@ -37,6 +37,7 @@ Download and install Python 3.3.5 (For RHEL6 and SLES11):
 	wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
 	python3.3 ez_setup.py
 	easy_install-3.3 pip
+	easy_install-3.3 pyzmq jinja2 tornado
 
 ###### 2. Download the source code from GitHub:
 	git clone https://github.com/jupyter/notebook.git
@@ -49,10 +50,7 @@ Download and install Python 3.3.5 (For RHEL6 and SLES11):
 	
         For SLES12:
 		easy_install pip
-
-###### 5. (For RHEL6 & SLES11 only) Install the below dependencies required to install notebook:
-	easy_install-3.3 pyzmq jinja2 tornado
 	
-###### 6. Install the Jupyter Notebook using Python’s package manager pip:
+###### 4. Install the Jupyter Notebook using Python’s package manager pip:
 	pip install notebook 
 	pip install jupyter
