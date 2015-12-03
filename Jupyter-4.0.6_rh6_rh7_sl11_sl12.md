@@ -5,7 +5,7 @@ _**General Notes:**_
 _When following the steps below please use a standard permission user unless otherwise specified._
 
 
-###### 1. Install the following dependencies.
+###### 1. Install the following dependencies:
 
 For RHEL7:
 
@@ -23,10 +23,10 @@ For SLES11:
 
     zypper install -y git wget gcc gcc-c++ make tar zlib-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel libpcap-devel
 
-Jupyter Notebooks requires Python version >= 2.7 inorder to be installed. 
-RHEL6 & SLES11, contains older version of Python. Hence, upgarde the Python version as shown below.
+Jupyter Notebook requires Python version >= 2.7 in order to be installed. 
+RHEL6 & SLES11, contains older version of Python. Hence upgarde the Python version as shown below.
 
-Download and install Python 3.3.5, setup script for Setuptools and pip:		
+Download and install Python 3.3.5 (For RHEL6 and SLES11):		
 
 	wget http://python.org/ftp/python/3.3.5/Python-3.3.5.tar.xz
 	tar xf Python-3.3.5.tar.xz
@@ -42,12 +42,13 @@ Download and install Python 3.3.5, setup script for Setuptools and pip:
 	git clone https://github.com/jupyter/notebook.git
 	cd /notebook
 
-###### 3. (For RHEL7 only) Download and install pip:
-	wget https://bootstrap.pypa.io/get-pip.py
-	python get-pip.py
+###### 3. Install pip:
+	For RHEL7:
+		wget https://bootstrap.pypa.io/get-pip.py
+		python get-pip.py
 	
-###### 4. (For SLES12 only) Install pip:
-	easy_install pip
+        For SLES12:
+		easy_install pip
 
 ###### 5. (For RHEL6 & SLES11 only) Install the below dependencies required to install notebook:
 	easy_install-3.3 pyzmq jinja2 tornado
