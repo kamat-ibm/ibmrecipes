@@ -32,7 +32,8 @@ Download and install Python 3.3.5 and PIP (For RHEL6 and SLES11):
 	tar xf Python-3.3.5.tar.xz
 	cd Python-3.3.5
 	./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
-	make && make altinstall
+	make
+	make altinstall
 
 ###### 2. Install PIP:
     
