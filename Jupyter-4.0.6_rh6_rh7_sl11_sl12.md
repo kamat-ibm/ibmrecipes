@@ -26,7 +26,7 @@ For SLES11:
 Jupyter Notebook requires Python version >= 2.7 in order to be installed. 
 RHEL6 & SLES11, contains older version of Python. Hence upgarde the Python version as shown below.
 
-Download and install Python 3.3.5 (For RHEL6 and SLES11):		
+Download and install Python 3.3.5 and PIP (For RHEL6 and SLES11):		
 
 	wget http://python.org/ftp/python/3.3.5/Python-3.3.5.tar.xz
 	tar xf Python-3.3.5.tar.xz
@@ -39,17 +39,18 @@ Download and install Python 3.3.5 (For RHEL6 and SLES11):
 	easy_install-3.3 pip
 	easy_install-3.3 pyzmq jinja2 tornado
 
-###### 2. Download the source code from GitHub:
-	git clone https://github.com/jupyter/notebook.git
-	cd /notebook
+###### 2. Install PIP:
 
-###### 3. Install pip:
 	For RHEL7:
 		wget https://bootstrap.pypa.io/get-pip.py
 		python get-pip.py
 	
         For SLES12:
 		easy_install pip
+
+###### 3. Download the source code from GitHub:
+	git clone https://github.com/jupyter/notebook.git
+	cd /notebook
 	
 ###### 4. Install the Jupyter Notebook using Python’s package manager pip:
 	pip install notebook 
