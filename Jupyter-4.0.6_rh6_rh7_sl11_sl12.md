@@ -41,13 +41,15 @@ Download and install Python 3.3.5 and PIP (For RHEL6 and SLES11):
 
 ###### 2. Install PIP:
 
-	For RHEL7:
-		wget https://bootstrap.pypa.io/get-pip.py
-		python get-pip.py
-	
-        For SLES12:
-		easy_install pip
+For RHEL7:
 
+    wget https://bootstrap.pypa.io/get-pip.py
+    python get-pip.py
+
+For SLES12:
+
+    easy_install pip
+       	
 ###### 3. Download the source code from GitHub:
 	git clone https://github.com/jupyter/notebook.git
 	cd /notebook
