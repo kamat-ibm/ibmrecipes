@@ -14,7 +14,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
 
    1. Use the following commands to obtain dependencies :
 
-    For RHEL 6.6
+    For RHEL 6.6 (TBD)
     ```shell
     sudo yum install git gcc gcc-c++ make cmake bison ncurses-devel
     ```
@@ -23,9 +23,9 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
     sudo yum install git gcc gcc-c++ make cmake bison ncurses-devel perl-Data-Dumper
     ```
 
-    For SLES 11 - _(Additional support packages are needed to update cmake)_
+    For SLES 11 - _(Additional support packages are needed to update cmake)_ (TBD)
     ```shell
-    sudo zypper install git gcc gcc-c++ make cmake bison ncurses-devel util-linux tar zip wget
+    sudo zypper install git gcc gcc-c++ make cmake bison ncurses-devel util-linux tar zip wget zlib-devel
     ```
     For SLES 12
     ```shell
@@ -38,28 +38,28 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
     mkdir /<source_root>/
     ```
 
-###Dependency Build -  cmake 3.3.0-rc2
+###Dependency Build
 
-   _**Only Required on SLES 11**  - Update cmake to version 3.3.0-rc2 by building from source._
+   _**Only Required on SLES 11**  - Update cmake to version 3.4.1 and GCC to version 6.0.0 by building from source._
 
-   1. _[Optional]_ Check the version of any existing `cmake` executable.
+   1. _[Optional]_ Check the version of any existing `cmake` & `GCC` executable.
     ```shell
       which cmake
       $(which cmake) --version
     ```
-      _**Note:** A `cmake` at version 2.6.3 or later should be usable without upgrade._
-
+      _**Note:** A `cmake` at version 2.6.3 or later and `GCC` version 4.4 or later should be usable without upgrade.Later version of             `GCC` can be built from [these instructions](https://github.com/linux-on-ibm-z/docs/wiki/Building-gccgo)._
+     
 
    1. Download the cmake source code, then extract it.
       ```shell
       cd /<source_root>/
-      wget http://www.cmake.org/files/v3.3/cmake-3.3.0-rc2.tar.gz
-      tar xzf cmake-3.3.0-rc2.tar.gz
+      wget --no-check-certificate https://cmake.org/files/v3.4/cmake-3.4.1.tar.gz
+      tar xzf cmake-3.4.1.tar.gz
       ```
 
    1. Bootstrap to configure the Makefile. Then Make and Install the utility.
       ```shell
-      cd cmake-3.3.0-rc2
+      cd cmake-3.4.1
       ./bootstrap --prefix=/usr
       gmake
       sudo gmake install
@@ -72,27 +72,28 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
       which cmake
       $(which cmake) --version
       ```
-
+   
+   
 ###Product Build - MySQL.
 
-   1. Download the MySQL 5.6.25 source code from Github.
+   1. Download the MySQL 5.7.10 source code from Github.
     ```shell
     cd /<source_root>/
     git clone https://github.com/mysql/mysql-server.git
     ```
 
-   1. Move into the ` mysql-server` sub-directory, and checkout branch 5.6
+   1. Move into the ` mysql-server` sub-directory, and checkout branch 5.7
     ```shell
     cd mysql-server
     git branch
-    git checkout 5.6
+    git checkout 5.7
     ```
-    _**Note:** At the time of writing branch 5.6 returned minor version 5.6.25, - this minor version is subject to change._
+    _**Note:** At the time of writing branch 5.7 returned minor version 5.7.10, - this minor version is subject to change._
 
 
    1. Configure and Build the MySQL Software.
     ```shell
-    cmake .
+    cmake . -DDOWNLOAD_BOOST=1 -DWITH_BOOST=.
     gmake
     ```
 
@@ -123,7 +124,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    1. Initialize MySQL Data Directory.  (The `--user=mysql`, to match the MySQL Daemon (mysqld) userid).
     ```shell
     cd /usr/local/mysql
-    sudo scripts/mysql_install_db --user=mysql
+    sudo bin/mysql_install_db --user=mysql
     ```
      _**Note:** An Error Message (e.g. 'FATAL ERROR: Could not find ./share/fill_help_tables.sql') is issued if  `mysql_install_db` is not run run from the `/usr/local/mysql` directory._
 
@@ -166,4 +167,3 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
 https://bugs.mysql.com/bug.php?id=72752 - Explanation of the cmake upgrade for SLES 11.
 
 http://www.mysql.com - MySQL Homepage with definitive Information and Documentation.
-
