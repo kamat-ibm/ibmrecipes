@@ -1,4 +1,4 @@
-MySQL can be built for Linux on z Systems running RHEL 6.6/7.1 and SLES 11/12 by following these instructions.  Version 5.6.25 has been successfully built & tested this way.
+MySQL can be built for Linux on z Systems running RHEL 7.1 and SLES 12 by following these instructions. Version 5.7.10 has been successfully built & tested this way.
 More information on MySQL is available at https://www.mysql.com and the source code can be downloaded from https://github.com/mysql/mysql-server.git
 .
 
@@ -14,18 +14,9 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
 
    1. Use the following commands to obtain dependencies :
 
-    For RHEL 6.6 (TBD)
-    ```shell
-    sudo yum install git gcc gcc-c++ make cmake bison ncurses-devel
-    ```
     For RHEL 7.1
     ```shell
     sudo yum install git gcc gcc-c++ make cmake bison ncurses-devel perl-Data-Dumper
-    ```
-
-    For SLES 11 - _(Additional support packages are needed to update cmake)_ (TBD)
-    ```shell
-    sudo zypper install git gcc gcc-c++ make cmake bison ncurses-devel util-linux tar zip wget zlib-devel
     ```
     For SLES 12
     ```shell
@@ -37,42 +28,6 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
     ```shell
     mkdir /<source_root>/
     ```
-
-###Dependency Build
-
-   _**Only Required on SLES 11**  - Update cmake to version 3.4.1 and GCC to version 6.0.0 by building from source._
-
-   1. _[Optional]_ Check the version of any existing `cmake` & `GCC` executable.
-    ```shell
-      which cmake
-      $(which cmake) --version
-    ```
-      _**Note:** A `cmake` at version 2.6.3 or later and `GCC` version 4.4 or later should be usable without upgrade.Later version of             `GCC` can be built from [these instructions](https://github.com/linux-on-ibm-z/docs/wiki/Building-gccgo)._
-     
-
-   1. Download the cmake source code, then extract it.
-      ```shell
-      cd /<source_root>/
-      wget --no-check-certificate https://cmake.org/files/v3.4/cmake-3.4.1.tar.gz
-      tar xzf cmake-3.4.1.tar.gz
-      ```
-
-   1. Bootstrap to configure the Makefile. Then Make and Install the utility.
-      ```shell
-      cd cmake-3.4.1
-      ./bootstrap --prefix=/usr
-      gmake
-      sudo gmake install
-      ```
-      _**Note:** To place `cmake` in the standard SLES location use `./bootstrap --prefix=/usr`._
-
-
-   1. Confirm the location and version of the upgraded `cmake`.
-      ```shell
-      which cmake
-      $(which cmake) --version
-      ```
-   
    
 ###Product Build - MySQL.
 
