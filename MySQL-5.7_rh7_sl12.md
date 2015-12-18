@@ -79,7 +79,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    1. Initialize MySQL Data Directory.  (The `--user=mysql`, to match the MySQL Daemon (mysqld) userid).
     ```shell
     cd /usr/local/mysql
-    sudo bin/mysql_install_db --user=mysql
+    bin/mysqld --initialize --user=mysql
     ```
      _**Note:** An Error Message (e.g. 'FATAL ERROR: Could not find ./share/fill_help_tables.sql') is issued if  `mysql_install_db` is not run run from the `/usr/local/mysql` directory._
 
