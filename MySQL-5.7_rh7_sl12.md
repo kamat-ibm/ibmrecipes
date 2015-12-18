@@ -81,7 +81,6 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
     cd /usr/local/mysql
     bin/mysqld --initialize --user=mysql
     ```
-     _**Note:** An Error Message (e.g. 'FATAL ERROR: Could not find ./share/fill_help_tables.sql') is issued if  `mysql_install_db` is not run run from the `/usr/local/mysql` directory._
 
    1. _[Optional]_ Start/Stop the mysqld daemon.
     ```shell
