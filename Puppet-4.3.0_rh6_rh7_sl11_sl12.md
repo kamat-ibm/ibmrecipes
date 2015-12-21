@@ -1,12 +1,15 @@
 # Building Puppet
-Puppet version 4.3.0 has been successfully built and tested for Linux on z Systems. The following instructions can be used for RHEL 7.1/6.6 and SLES 12/11.
+Puppet version 4.3.1 has been successfully built and tested for Linux on z Systems. The following instructions can be used for RHEL 7.1/6.6 and SLES 12/11.
 
-_**General Notes:**_ 	 
-_When following the steps below please use a standard permission user unless otherwise specified._
+_**General Notes:**_
+
+i) _**Note:** When following the steps below please use a standard permission user unless otherwise specified._
+
+ii) _**Note:** A directory `/<source_root>/` will be referred to in these instructions, this is a temporary writeable directory anywhere you'd like to place it._
 
 ## Puppet Master Installation
 
-###### 1. Install the following dependencies.
+###### 1. Install the following dependencies and create `/<source_root>/` directory
 #
 
 For RHEL6 & RHEL7:
@@ -17,38 +20,44 @@ For SLES11 & SLES12:
 
     zypper install -y gcc-c++ readline-devel tar openssl unzip openssl-devel make git wget sqlite-devel glibc-locale
 
+
+Create the `/<source_root>/` directory mentioned above.
+
+    mkdir /<source_root>/
+
 Download and install Ruby:
 
+     cd /<source_root>/
      wget http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz
      tar -xvf ruby-2.2.2.tar.gz
      cd ruby-2.2.2
      ./configure && make && make install
-	 cd ..
 	 
 Download and install RubyGems: 
 
+     cd /<source_root>/
      wget http://production.cf.rubygems.org/rubygems/rubygems-2.2.2.tgz
      tar -xvf rubygems-2.2.2.tgz
      cd rubygems-2.2.2
      ruby  setup.rb
-	 cd ..
     
 Install bundler:
 
      gem install bundler rake-compiler
    
-###### 2.Install Puppet. 
+###### 2. Install Puppet 
 #
-     gem install puppet -v 4.3.0
+     cd /<source_root>/
+     gem install puppet -v 4.3.1
 
-###### 3.Locate the $confdir by command.
+###### 3. Locate the $confdir by command
 #
      puppet master --configprint confdir 
 The output gives the directory. If such directory does not exist, create one. For example, if the output is /etc/puppetlabs/puppet , then
 
      mkdir -p /etc/puppetlabs/puppet
 
-###### 4.Create necessary directories and files in  $confdir. 
+###### 4. Create necessary directories and files in  $confdir
 #
      mkdir /etc/puppetlabs/puppet/modules
      mkdir /etc/puppetlabs/puppet/manifests
@@ -56,17 +65,17 @@ The output gives the directory. If such directory does not exist, create one. Fo
 	 touch puppet.conf
      wget https://raw.githubusercontent.com/puppetlabs/puppet/master/conf/auth.conf
     
-###### 5.Create other necessary directories.
+###### 5. Create other necessary directories
 #
      mkdir -p /opt/puppetlabs/puppet
      mkdir -p /var/log/puppetlabs
 
-###### 6.Create "puppet" user and group.
+###### 6. Create "puppet" user and group
 #
      useradd -d /home/puppet -m -s /bin/bash puppet
      puppet resource group puppet ensure=present
 
-###### 7.Add the following parameters to $confdir/puppet.conf (assuming hostname of the master machine is master.myhost.com).
+###### 7. Add the following parameters to $confdir/puppet.conf (assuming hostname of the master machine is master.myhost.com)
 #
      [main]
           logdir = /var/log/puppetlabs
@@ -79,13 +88,13 @@ The output gives the directory. If such directory does not exist, create one. Fo
           certname = master.myhost.com
           autosign = true
 
-###### 8.The Puppet master runs on TCP port 8140. This port needs to be open on your master’s firewall (and any intervening firewalls and network devices), and your agent must be able to route and connect to the master. To do this, you need to have an appropriate firewall rule on your master, such as the following rule for the Netfilter firewall.
+###### 8. The Puppet master runs on TCP port 8140. This port needs to be open on your master’s firewall (and any intervening firewalls and network devices), and your agent must be able to route and connect to the master. To do this, you need to have an appropriate firewall rule on your master, such as the following rule for the Netfilter firewall
 #
      iptables -A INPUT -p tcp -m state --state NEW --dport 8140 -j ACCEPT 
 
 ## Puppet Agent Installation
 
-###### 1. Install the following dependencies. 
+###### 1. Install the following dependencies and create `/<source_root>/` directory
 #
 
 For RHEL6 & RHEL7:
@@ -96,8 +105,13 @@ For SLES11 & SLES12:
 
      zypper install -y gcc-c++ readline-devel tar openssl unzip openssl-devel make git wget sqlite-devel glibc-locale
 
+Create the `/<source_root>/` directory mentioned above.
+
+    mkdir /<source_root>/
+
 Download and install Ruby: 
 
+     cd /<source_root>/
      wget http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz
      tar -xvf ruby-2.2.2.tar.gz
      cd ruby-2.2.2
@@ -105,6 +119,7 @@ Download and install Ruby:
 	 
 Download and install RubyGems: 
 
+     cd /<source_root>/
      wget http://production.cf.rubygems.org/rubygems/rubygems-2.2.2.tgz
      tar -xvf rubygems-2.2.2.tgz
      cd rubygems-2.2.2
@@ -116,7 +131,8 @@ Install bundler:
    
 ###### 2.Install Puppet. 
 #
-     gem install puppet -v 4.3.0
+     cd /<source_root>/
+     gem install puppet -v 4.3.1
 
 ###### 3.Locate the  $confdir  by command.
 #
@@ -153,13 +169,13 @@ The output gives the directory. If such directory does not exist, create one. Fo
       <master ipaddress> <master hostname>
 
 ## Connecting the Master and Agent for the first time
-On the master machine (assuming with hostname master.myhost.com), run the master application:
+###### 1. Run the master applicationOn on master machine (assuming with hostname master.myhost.com)
 
      puppet master --verbose --no-daemonize 
 
 The --verbose option outputs verbose logging and the --no-daemonize option keeps the daemon in the foreground and redirects output to standard output. You can also add the --debug option to produce more verbose debug output from the daemon.
 
-On the agent application (assuming the hostname of the agent is agent.myhost.com):
+###### 2. On the agent application (assuming the hostname of the agent is agent.myhost.com):
 
      puppet agent --test 
 
@@ -178,11 +194,11 @@ This is because you don't have any plugins to syn yet, and the pluginsyn propert
 
 ## Testing
 For testing, run the tests from the source code.
-###### 1.Switch user to puppet, clone Puppet git repository in /home/puppet and execute "bundle install" to install the required gems.
+###### 1. Switch user to puppet, clone Puppet git repository in /home/puppet and execute "bundle install" to install the required gems.
 
      su puppet
      cd /home/puppet
-     git clone --branch 4.3.0 git://github.com/puppetlabs/puppet
+     git clone --branch 4.3.1 git://github.com/puppetlabs/puppet
      cd puppet
      bundle install --path .bundle/gems/
 
