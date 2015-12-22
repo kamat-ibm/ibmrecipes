@@ -43,6 +43,7 @@ Download and install RubyGems:
     
 Install bundler:
 
+     cd /<source_root>/
      gem install bundler rake-compiler
    
 #### 2. Install Puppet 
@@ -127,6 +128,7 @@ Download and install RubyGems:
 
 Install bundler:
 
+     cd /<source_root>/
      gem install bundler rake-compiler
    
 #### 2. Install Puppet 
