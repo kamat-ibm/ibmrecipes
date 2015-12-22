@@ -129,12 +129,12 @@ Install bundler:
 
      gem install bundler rake-compiler
    
-###### 2.Install Puppet. 
+###### 2.Install Puppet 
 #
      cd /<source_root>/
      gem install puppet -v 4.3.1
 
-###### 3.Locate the  $confdir  by command.
+###### 3.Locate the  $confdir  by command
 #
      puppet agent --configprint confdir 
 
@@ -142,14 +142,14 @@ The output gives the directory. If such directory does not exist, create one. Fo
 
      mkdir -p /etc/puppetlabs/puppet
     
-###### 4.Create necessary directories and files in  $confdir.
+###### 4.Create necessary directories and files in  $confdir
 #
      cd /etc/puppetlabs/puppet
      mkdir -p /opt/puppetlabs/puppet
      mkdir -p /var/log/puppetlabs
 	 touch puppet.conf
 
-###### 5.Add the following parameters to $confdir/puppet.conf (assuming hostname of the master machine is master.myhost.com).
+###### 5.Add the following parameters to $confdir/puppet.conf (assuming hostname of the master machine is master.myhost.com)
 #
      [main]
           logdir = /var/log/puppetlabs
@@ -163,7 +163,7 @@ The output gives the directory. If such directory does not exist, create one. Fo
           report = true
           pluginsync = false
           
-###### 6. Add an entry in /etc/hosts file with ipaddress and hostname of master node.
+###### 6. Add an entry in /etc/hosts file with ipaddress and hostname of master node
 #
       vi /etc/hosts
       <master ipaddress> <master hostname>
@@ -175,7 +175,7 @@ The output gives the directory. If such directory does not exist, create one. Fo
 
 The --verbose option outputs verbose logging and the --no-daemonize option keeps the daemon in the foreground and redirects output to standard output. You can also add the --debug option to produce more verbose debug output from the daemon.
 
-###### 2. On the agent application (assuming the hostname of the agent is agent.myhost.com):
+###### 2. On the agent application (assuming the hostname of the agent is agent.myhost.com)
 
      puppet agent --test 
 
@@ -194,7 +194,7 @@ This is because you don't have any plugins to syn yet, and the pluginsyn propert
 
 ## Testing
 For testing, run the tests from the source code.
-###### 1. Switch user to puppet, clone Puppet git repository in /home/puppet and execute "bundle install" to install the required gems.
+###### 1. Switch user to puppet, clone Puppet git repository in /home/puppet and execute "bundle install" to install the required gems
 
      su puppet
      cd /home/puppet
@@ -202,7 +202,7 @@ For testing, run the tests from the source code.
      cd puppet
      bundle install --path .bundle/gems/
 
-Edit file_spec.rb to support the testcases in environment.
+###### 2. Edit file_spec.rb to support the testcases in environment
 
      cd /home/puppet/puppet
         
@@ -215,9 +215,11 @@ Replace it with
      should compile.and_raise_error(Puppet::FileBucket::BucketError, /Got passed new contents/)
         end
 
+###### 3. Running the test cases
+
 Few testcases need to be executed as root user and others as puppet user.
 
-Execute testcases as root user:
+###### 3.1. Execute testcases as root user:
 
 * Unit testcases, except ssl, face, indirector, network related testcases, should be executed as root user.
 * The integration testcases for provider and type should be executed as root user. 
@@ -260,7 +262,7 @@ Run the shell script
      ./rootuser_tests.sh
      
 
-Execute testcases as puppet user:
+###### 3.2. Execute testcases as puppet user:
 
 * ssl, face, indirector, network related  unit testcases should be executed as puppet user.
 * The integration testcases except provider and type related testcases should be executed as puppet user.
