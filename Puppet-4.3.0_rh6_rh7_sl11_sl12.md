@@ -129,12 +129,12 @@ Install bundler:
 
      gem install bundler rake-compiler
    
-###### 2.Install Puppet 
+###### 2. Install Puppet 
 #
      cd /<source_root>/
      gem install puppet -v 4.3.1
 
-###### 3.Locate the  $confdir  by command
+###### 3. Locate the  $confdir  by command
 #
      puppet agent --configprint confdir 
 
@@ -142,14 +142,14 @@ The output gives the directory. If such directory does not exist, create one. Fo
 
      mkdir -p /etc/puppetlabs/puppet
     
-###### 4.Create necessary directories and files in  $confdir
+###### 4. Create necessary directories and files in  $confdir
 #
      cd /etc/puppetlabs/puppet
      mkdir -p /opt/puppetlabs/puppet
      mkdir -p /var/log/puppetlabs
 	 touch puppet.conf
 
-###### 5.Add the following parameters to $confdir/puppet.conf (assuming hostname of the master machine is master.myhost.com)
+###### 5. Add the following parameters to $confdir/puppet.conf (assuming hostname of the master machine is master.myhost.com)
 #
      [main]
           logdir = /var/log/puppetlabs
@@ -226,13 +226,14 @@ Few testcases need to be executed as root user and others as puppet user.
 
 ```Note```: Run the  below commands as root user.You can switch to root user by running **exit**, if you are currently switched to puppet user.
 
-Create a shell script. For example ```rootuser_tests.sh``` 
+###### 3.1.1. Create a shell script
+For example ```rootuser_tests.sh``` 
 
      cd /home/puppet/puppet
      touch rootuser_tests.sh
      chmod 0777 rootuser_tests.sh
         
-Add the following content to rootuser_tests.sh.
+###### 3.1.2. Add the following content to the shell script
 
      #!/bin/bash
      set -e
@@ -255,8 +256,7 @@ Add the following content to rootuser_tests.sh.
        bundle exec rspec --exclude-pattern ./spec/integration/provider/service/systemd_spec.rb "spec/integration/$j"
      done
 
-
-Run the shell script
+###### 3.1.3. Run the shell script
 
      export LC_ALL="en_US.UTF8"
      ./rootuser_tests.sh
@@ -268,13 +268,14 @@ Run the shell script
 * The integration testcases except provider and type related testcases should be executed as puppet user.
 * data_binding.rb file is not executed as it does not involve any testcases to be invoked directly.
 
-Create a shell script. For example ```puppetuser_tests.sh```
+###### 3.2.1. Create a shell script
+For example ```puppetuser_tests.sh```
 
      cd /home/puppet/puppet
      touch puppetuser_tests.sh
      chmod 0777 puppetuser_tests.sh
         
-Add the following content to it.
+###### 3.2.3. Add the following content to the script
 
      #!/bin/bash
      set -e
@@ -298,10 +299,10 @@ Add the following content to it.
      done
 
 
-Switch user to puppet
+###### 3.2.3. Switch user to puppet
 
      su puppet
 
-Run the shell script
+###### 3.2.4. Run the shell script
 
      ./puppetuser_tests.sh
