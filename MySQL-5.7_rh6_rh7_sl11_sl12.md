@@ -14,9 +14,17 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
 
    1. Use the following commands to obtain dependencies :
 
+    For RHEL 6
+    ```shell
+    sudo yum install git gcc gcc-c++ make cmake bison ncurses-devel
+    ```
     For RHEL 7.1
     ```shell
     sudo yum install git gcc gcc-c++ make cmake bison ncurses-devel perl-Data-Dumper
+    ```
+    For SLES 11 - (Additional support packages are needed to update cmake)
+    ```shell
+    sudo zypper install git gcc gcc-c++ make cmake bison ncurses-devel util-linux tar zip wget
     ```
     For SLES 12
     ```shell
