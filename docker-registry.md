@@ -5,7 +5,7 @@ Docker Distribution can be built and tested on Linux on z Systems (RHEL 7.1 ans 
 _**General Notes:**_ 	 
 _When following the steps below please use a standard permission user unless otherwise specified._
 
-### Step 1 : Install the Dependencies
+###### Step 1 : Install the Dependencies
 Following are the build dependencies for Distribution. 
 
 * git-core (SLES12) or git (RHEL7)
