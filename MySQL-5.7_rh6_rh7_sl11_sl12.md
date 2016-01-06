@@ -1,4 +1,4 @@
-MySQL can be built for Linux on z Systems running RHEL 7.1 and SLES 12 by following these instructions. Version 5.7.10 has been successfully built & tested this way.
+MySQL can be built for Linux on z Systems running RHEL 6/7.1 and SLES 11/12 by following these instructions. Version 5.7.10 has been successfully built & tested this way.
 More information on MySQL is available at https://www.mysql.com and the source code can be downloaded from https://github.com/mysql/mysql-server.git
 .
 
