@@ -71,7 +71,22 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
       which cmake
       $(which cmake) --version
       ```
-      
+    
+   1. Confirm the version of GCC.
+      ```shell
+      gcc --version
+      ```
+   
+   Note: GCC might still point to the older version.Run the commands below to link it to the latest version.
+      ```shell
+      update-alternatives --install /usr/bin/gcc gcc /opt/gccgo/bin/gcc 50
+      update-alternatives --install /usr/bin/g++ g++ /opt/gccgo/bin/g++ 50
+      update-alternatives --install /usr/bin/cpp cpp /opt/gccgo/bin/cpp 50
+      update-alternatives --install /usr/bin/c++ c++ /opt/gccgo/bin/c++ 50
+      update-alternatives --install /usr/bin/cc cc /opt/gccgo/bin/gcc 50
+      export LD_LIBRARY_PATH=/opt/gccgo/lib64
+      ```
+   
 ###Product Build - MySQL.
 
    1. Download the MySQL 5.7.10 source code from Github.
