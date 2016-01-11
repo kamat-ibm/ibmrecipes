@@ -34,7 +34,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    1. Create the `/<source_root>/` directory mentioned above.
 
     ```shell
-    mkdir /<source_root>/
+    sudo mkdir /<source_root>/
     ```
     
 ###Dependency Build
@@ -52,15 +52,15 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    1. Download the cmake source code, then extract it.
       ```shell
       cd /<source_root>/
-      wget --no-check-certificate https://cmake.org/files/v3.4/cmake-3.4.1.tar.gz
-      tar xzf cmake-3.4.1.tar.gz
+      sudo wget --no-check-certificate https://cmake.org/files/v3.4/cmake-3.4.1.tar.gz
+      sudo tar xzf cmake-3.4.1.tar.gz
       ```
 
    1. Bootstrap to configure the Makefile. Then Make and Install the utility.
       ```shell
       cd cmake-3.4.1
-      ./bootstrap --prefix=/usr
-      gmake
+      sudo ./bootstrap --prefix=/usr
+      sudo gmake
       sudo gmake install
       ```
       _**Note:** To place `cmake` in the standard SLES location use `./bootstrap --prefix=/usr`._
