@@ -106,8 +106,8 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
 
    1. Configure and Build the MySQL Software.
     ```shell
-    sudo cmake . -DDOWNLOAD_BOOST=1 -DWITH_BOOST=.
-    sudo gmake
+    cmake . -DDOWNLOAD_BOOST=1 -DWITH_BOOST=.
+    gmake
     ```
 
    1. _[Optional]_ Check the make
