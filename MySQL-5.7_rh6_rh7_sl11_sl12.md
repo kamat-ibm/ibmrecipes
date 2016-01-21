@@ -61,7 +61,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
       cd cmake-3.4.1
       ./bootstrap --prefix=/usr
       gmake
-      gmake install
+      sudo gmake install
       ```
       _**Note:** To place `cmake` in the standard SLES location use `./bootstrap --prefix=/usr`._
 
