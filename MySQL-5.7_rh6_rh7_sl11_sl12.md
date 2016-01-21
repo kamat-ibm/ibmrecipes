@@ -34,7 +34,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    1. Create the `/<source_root>/` directory mentioned above.
 
     ```shell
-    sudo mkdir /<source_root>/
+    mkdir /<source_root>/
     ```
     
 ###Dependency Build
@@ -92,7 +92,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    1. Download the MySQL 5.7.10 source code from Github.
     ```shell
     cd /<source_root>/
-    sudo git clone https://github.com/mysql/mysql-server.git
+    git clone https://github.com/mysql/mysql-server.git
     ```
 
    1. Move into the ` mysql-server` sub-directory, and checkout branch 5.7
