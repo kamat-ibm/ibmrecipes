@@ -53,7 +53,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
       ```shell
       cd /<source_root>/
       wget --no-check-certificate http://www.cmake.org/files/v3.3/cmake-3.3.0-rc2.tar.gz
-      tar xzf cmake-3.3.0.tar.gz
+      tar xzf cmake-3.3.0-rc2.tar.gz
       ```
 
    1. Bootstrap to configure the Makefile. Then Make and Install the utility.
@@ -77,6 +77,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
       gcc --version
       ```
    
+   DO NOT DO THIS STEP
    Note: GCC might still point to the older version.Run the commands below to link it to the latest version.
       ```shell
       update-alternatives --install /usr/bin/gcc gcc /opt/gccgo/bin/gcc 50
