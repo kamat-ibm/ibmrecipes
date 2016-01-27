@@ -52,13 +52,13 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    1. Download the cmake source code, then extract it.
       ```shell
       cd /<source_root>/
-      wget --no-check-certificate https://cmake.org/files/v3.4/cmake-3.4.1.tar.gz
-      tar xzf cmake-3.4.1.tar.gz
+      wget --no-check-certificate http://www.cmake.org/files/v3.3/cmake-3.3.0-rc2.tar.gz
+      tar xzf cmake-3.3.0.tar.gz
       ```
 
    1. Bootstrap to configure the Makefile. Then Make and Install the utility.
       ```shell
-      cd cmake-3.4.1
+      cd cmake-3.3.0
       ./bootstrap --prefix=/usr
       gmake
       sudo gmake install
