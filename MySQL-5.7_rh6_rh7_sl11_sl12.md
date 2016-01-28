@@ -58,7 +58,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
 
    1. Bootstrap to configure the Makefile. Then Make and Install the utility.
       ```shell
-      cd cmake-3.3.0
+      cd cmake-3.3.0-rc2
       ./bootstrap --prefix=/usr
       gmake
       sudo gmake install
