@@ -1,6 +1,11 @@
-MySQL can be built for Linux on z Systems running RHEL 7.1 and SLES 12 by following these instructions. Version 5.7.10 has been successfully built & tested this way.
-More information on MySQL is available at https://www.mysql.com and the source code can be downloaded from https://github.com/mysql/mysql-server.git
-.
+## Building MySQL
+More information on MySQL is available at https://www.mysql.com and the source code can be downloaded from https://github.com/mysql/mysql-server.git.
+
+Below versions of MySQL are available in respective distributions at the time of this recipe creation:
+
+*    Ubuntu 16.04 has `5.7.12-0ubuntu1`
+
+The instructions provided below specify the steps to build MySQL version 5.7 on Linux on the IBM z Systems for RHEL 7.1 and SLES12.
 
 _**General Notes:**_
 
@@ -20,9 +25,15 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
     ```
     For SLES 12
     ```shell
-    sudo zypper install git gcc gcc-c++ make cmake bison ncurses-devel
+    sudo zypper install git gcc gcc-c++ make cmake bison ncurses-devel wget tar
     ```
 
+	For UBUNTU 16.04
+    ```shell
+	sudo apt-get update
+    sudo apt-get install git make cmake gcc g++ libncurses5-dev bison
+    ```
+	
    1. Create the `/<source_root>/` directory mentioned above.
 
     ```shell
@@ -31,7 +42,7 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
    
 ###Product Build - MySQL.
 
-   1. Download the MySQL 5.7.10 source code from Github.
+   1. Download the MySQL 5.7.13 source code from Github.
     ```shell
     cd /<source_root>/
     git clone https://github.com/mysql/mysql-server.git
@@ -43,13 +54,29 @@ ii) _**Note:** A directory `/<source_root>/` will be referred to in these instru
     git branch
     git checkout 5.7
     ```
-    _**Note:** At the time of writing branch 5.7 returned minor version 5.7.10, - this minor version is subject to change._
+    _**Note:** At the time of writing branch 5.7 returned minor version 5.7.13, - this minor version is subject to change._
 
 
    1. Configure and Build the MySQL Software.
-    ```shell
+   
+	For RHEL 7.1
+	```shell
     cmake . -DDOWNLOAD_BOOST=1 -DWITH_BOOST=.
     gmake
+    ```
+	
+	For UBUNTU 16.04
+	```shell
+    cmake . -DDOWNLOAD_BOOST=1 -DWITH_BOOST=.
+    make
+    ```
+	
+	For SLES12
+	```shell
+	wget http://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.gz 
+	tar xzf boost_1_59_0.tar.gz 
+	cmake .
+	gmake
     ```
 
    1. _[Optional]_ Check the make
